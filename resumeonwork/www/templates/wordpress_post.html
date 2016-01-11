@@ -1,0 +1,21 @@
+<ion-view class="post-view">
+ <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-chevron-left" onclick="window.history.back()"></button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <span>Knowledge Center</span>
+  </ion-nav-title>
+ <ion-content>
+    <div class="post-heading item item-text-wrap">
+      <p class="post-title"  ng-bind-html="post.title | rawHtml"></p>
+     </div>
+    <div class="post-content item item-text-wrap">
+      <p class="post-text" ng-bind-html="post.content | rawHtml"></p>
+    </div>
+    <div class="post-tags item item-text-wrap">
+      <span class="post-tag button button-small button-outline button-stable" ng-repeat="category in post.categories">{{category.title}}</span>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="post-footer bar bar-footer bar-dark">
+  </ion-footer-bar>
+</ion-view>

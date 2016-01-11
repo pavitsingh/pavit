@@ -1,0 +1,61 @@
+<ion-view class="tinder-cards-view">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button menu-toggle="right" class="button button-icon icon ion-gear-a"></button>
+  </ion-nav-buttons>
+ <ion-nav-title>
+    <span>Suggested Jobs</span>
+  </ion-nav-title>
+  <ion-content scroll="false"> <input type='hidden' name='lastrec' value='' id='lastrec'> 
+    <td-cards>
+      	<td-card id="td-card" ng-repeat="card in pavcards | limitTo:2 "
+ on-tap="onTap($index,card)"      on-transition-left="transitionLeft(card)"
+      on-transition-right="transitionRight(card)"
+      on-transition-out="transitionOut(card)"
+      on-destroy="cardDestroyed($index,card)"
+      on-swipe-left="cardSwipedLeft($index,card)"
+      on-swipe-right="cardSwipedRight($index,card)"
+      on-partial-swipe="cardPartialSwipe(amt)">
+        		<div class="image"> 
+          		<div class="no-text overlayBox"> 
+            		<div class="noBox boxed"> 
+   Ignore 
+            </div> 
+          		</div> 
+   				<div class="jobTitle">{{width}}{{height}}{{card.jobTitle}}</div> 
+  				<table style='width:360px;'><tr><td style='width:120px;color:#3EBF75;' align='center'><div class="jobLocation"><table cellpadding='0' cellspacing='0'><tr><td align='center'><i class="ion-location"></i></td></tr><tr><td  style='font-size:10px;word-break: keep-all;white-space:nowrap;'>{{card.jobLocation}}</td></tr></table></div></td> 
+  				<td style='width:120px;color:#D81B1E;' align='center'><div class="jobLocation"><table cellpadding='0' cellspacing='0'><tr><td align='center'><i class="ion-briefcase" style='position:relative;left:-10px;'></i></td></tr><tr><td style='font-size:10px;word-break: keep-all;white-space:nowrap;position:relative;left:-10px;'>{{card.jobExp}}</td></tr></table></div></td> 
+  				<td style='width:120px;color:#2FB4CD;' align='center'><div class="jobLocation"><table cellpadding='0' cellspacing='0'><tr><td align='center'><i class="ion-clock" style='position:relative;left:-15px;'></i></td></tr><tr><td  style='font-size:10px;word-break: keep-all;white-space:nowrap;position:relative;left:-15px;'> {{card.jobDate}}</td></tr></table></div></td></tr></table> 
+  				<div class="jobSkillsshort">{{card.skillsShort}}</div> 
+  				<div class="bottomcard" style='width:100%;padding-left:10px;padding-right:10px;'> 
+ 					
+					<!--<div style="text-align:center;padding-left:30px;"> 
+ 						<ul> 
+ 							<li class="bottombutton"> 
+ 								<div class="cancel ion-close-round" ng-click="transitionmLeft($index,card)"> 
+ 								</div> 
+ 							</li> 
+ 							<li class="bottombutton "> 
+ 								<div class="saveacc ion-bookmark" ng-click="transitionBookmark($index,card)"> 
+ 								</div> 
+ 							</li> 
+ 							<li class="bottombutton ">  
+  								<div class="accept ion-thumbsup" ng-click="transitionmRight($index,card)"> 
+ 								</div> 
+ 							</li> 
+ 						</ul> 
+ 					</div>--> 
+ 				</div> 
+ 				<div class="yes-text overlayBox">
+            			<div class="yesBox boxed">
+  Apply 
+            </div> 
+          		</div>
+        		</div>
+     		</td-card> 
+    	</td-cards> 
+  </ion-content> 
+ <ion-footer-bar><div class="tabs tabs-icon-top"><a class="tab-item" href="#/app/layouts/tinder-cards/"><i class="icon ion-clipboard"></i>Suggested Jobs</a><a class="tab-item"  href="#/app/layouts/search"><i class="icon ion-ios-search-strong"></i>Job Finder</a><a class="tab-item"  ui-sref="app.saveforlater"><i class="icon ion-heart"></i>Shortlist</a><a class="tab-item" href="#/app/profile"><i class="icon ion-person"></i>My Profile</a></div></ion-footer-bar> 
+ </ion-view>

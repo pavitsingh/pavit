@@ -1,0 +1,174 @@
+<ion-view class="profile-view">
+ <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <span>My Profile</span>
+  </ion-nav-title>
+  <ion-content>
+    <center>
+		<div style="display:inline-block; width:90%;padding-top:10px;padding-bottom:10px;">
+				<div style="float:left">
+					<img class="user-image" style="height:100px;width:100px;" ng-src="{{imageurl}}">
+				</div>
+				<div style="float:left;line-height:20px;padding-left:20px;padding-top:30px;">
+					<div style="text-align:left;font-size:12px;">{{user_nicename}}</div>
+					<div style="font-size:10px;">{{user_email}}</div>
+				</div>
+				<br style="clear:both">
+				<br />
+				<div style="font-size:14px;">
+					<div style="float:left;width:20%;"><i class="ion-briefcase"></i></div>
+					<div style="float:left;width:70%;text-align:left;" ng-click="openexpmodel()">
+						<div ng-show="exp=='0'&&expmon=='0'"> Fresher</div> 
+						<div ng-show="exp>'0'||expmon>'0'">   {{exp}} Year(s) {{expmon}}  Month(s) </div> 
+					</div>
+					<div style="float:left">
+						<i class="ion-compose" ng-click="openexpmodel()" style="float:right;"></i> 
+					</div>
+					<br style="clear:both">
+					<br />
+					<div style="float:left;width:20%;"><i class="ion-social-buffer"></i></div><div style="float:left;width:70%;text-align:left;" ng-click="openlocmodel()">{{preferlocation}} </div><div style="float:left">
+					<i class="ion-compose" ng-click="openlocmodel()" style="float:right;"></i> </div>
+					<br style="clear:both">
+					<br />
+					<div style="float:left;width:20%;"><i class="ion-ios-location"></i></div><div style="float:left;width:70%;text-align:left;" ng-click="openskillmodel()">{{preferskills}} </div><div style="float:left">
+					<i class="ion-compose" ng-click="openskillmodel()" style="float:right;"></i> 
+					</div>
+					<br style="clear:both">
+				</div>
+		</div>
+		<div style="display:inline-block; width:99%;padding-top:10px;border-top:1px solid #888;background-color:">
+			<div style="width:48%;float:left;">
+			<center ng-click="gotoappliedjobs()">
+				<div>
+				<i class="ion-android-checkbox"></i>
+				</div>
+				<div ng-show="countjobsapplied=='0'">
+					No jobs applied.
+				</div>
+				<div ng-show="countjobsapplied>'0'">
+					{{countjobsapplied}} jobs applied.
+				</div>
+			</center>
+			</div>
+			<div style="width:48%;float:left;">
+			<center ng-click="gotofavouritejobs()">
+				<div>
+				<i class="ion-android-favorite"></i>
+				</div>
+				<div ng-show="countfavouritejobs=='0'">
+					No favourites jobs.
+				</div>
+				<div ng-show="countfavouritejobs>'0'">
+					{{countfavouritejobs}} favourites jobs.
+				</div>
+			</center>
+			</div>
+		</div>
+		<div style="display:inline-block; width:99%;padding-top:10px;background-color:">
+			<div style="width:98%;float:left;">
+				<center>
+					<div style="width:100px;height:100px;background-color:#007DC3;-moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%;color:#fff;line-height:20px;padding-top:30px;">
+						<div ng-show="countjobsinvitation==0" style="color:#fff;">
+							No Jobs Invitation.
+						</div>
+						<div ng-show="countjobsinvitation>'0'"  style="color:#fff;">
+							{{countjobsinvitation}} Jobs Invitation.
+						</div>
+					</div>
+				</center>
+			</div>
+		</div>
+	</center>
+	<script id="Experience.html" type="text/ng-template">
+	    <div class="modal" style="top:0;left:0; height:100%"> 
+     <ion-header-bar class="bar-secondary app-top-bar"> 
+     <i class="ion-ios-arrow-back"  ng-click="closeexpmodel()"  style="font-size:30px;height:30px;color:#fff;padding-left:10px;padding-top:5px;cursor:pointer;" /> 
+ 		<h1 class="title" style="float:left;"> 
+ 		Experience 
+ 		</h1> 
+     </ion-header-bar> 
+     <ion-content> 
+         <ion-list> 
+            <div class="clearfix">  
+ 			</div> 
+ 			<div class="range range-assertive" style="width:100%;text-align:center;" > 
+          		<ion-item style="width:100%;height:500px;" > 
+          			<div style="width:50%;text-align:center;float:left;"> 
+ 						<input type="range" min="0" max="20"  step="1" ng-model="exp" style="position:relative;left:10%;"> 
+ 					</div><div style="float:left;line-height:55px;position:relative;left:50px;"> {{exp}}year(s)</div><br style="clear:both;" />  
+         			<div style="width:50%;text-align:center;float:left;">   
+ 						<input type="range" min="0" max="11"  step="1" ng-model="expmon"  style="position:relative;left:10%;">  
+ 					</div><div style="float:left;line-height:55px;position:relative;left:50px;"> {{expmon}}month(s)</div><br style="clear:both;" />  
+         			<div class="clearfix"></div> 
+  <button class="button  button-block button-positive" style="position:absolute;bottom:20px;left:0px;width:100%"  ng-click="saveexp(exp,expmon)">Done</button> 
+           </ion-item></div>
+          </ion-list>
+         <div class="clearfix"></div>
+      </ion-content>
+    </div>
+	</script>
+	<script id="Location.html" type="text/ng-template">
+	    <div class="modal" style="top:0;left:0; height:100%;"> 
+     <ion-header-bar class="bar-secondary app-top-bar"> 
+     <i class="ion-ios-arrow-back"  ng-click="closelocmodel()"  style="font-size:30px;height:30px;color:#fff;padding-left:10px;padding-top:5px;cursor:pointer;" />  
+  <h1 class="title" style="float:left;">Preferred Location</h1> 
+     </ion-header-bar> 
+     <ion-content class="has-footer"> 
+              <ion-list>  
+            <div class="clearfix"></div> 
+           <input type="text" ng-model="searchlocation" placeholder="Type here to search" style="padding:6px;margin-left:10px;"></input> 
+          <ion-item ng-repeat="loc in Location | filter : searchlocation" >  
+          <div style="float:left;"  ng-click="addlocation(loc,$index)">  
+ 		  {{loc.location}} 
+  </div> 
+  <div style="float:right;">  
+     <input name="{{loc.id}}" type="checkbox" ng-checked="loc.checked" ng-click="addlocation(loc,$index)"/> </div> 
+           </ion-item> 
+          </ion-list> 
+         <div class="clearfix"></div> 
+      </ion-content> 
+ <ion-footer-bar class="bar-stable"> 
+  <button class="button  button-block button-positive" style="width:100%"  ng-click="savelocation()">Done</button> 
+ </ion-footer-bar> 
+    </div> 
+ 
+	</script>
+	<script id="Skills.html" type="text/ng-template">
+	    <div class="modal" style="top:0;left:0; height:100%">  
+     <ion-header-bar class="bar-secondary app-top-bar"> 
+     <i class="ion-ios-arrow-back"  ng-click="closeskillmodel()"  style="font-size:30px;height:30px;color:#fff;padding-left:10px;padding-top:5px;cursor:pointer;" /><h1 class="title" style="float:left;">Add Skill</h1> 
+     </ion-header-bar> 
+     <ion-content> 
+              <ion-list> 
+             <form ng-submit="addmyskill(newskill);newskill=''"> <input type="text" class="input" style="width:80%;float:left;margin-left:10px;padding:6px;" ng-model="newskill" ng-click="addmyskill(newskill);newskill=''" placeholder=" Add Skill "></input> <i class="ion-android-add-circle" style="font-size:30px;margin-left:10px;" ng-click="addmyskill(newskill);newskill=''" ></i></form><br><br style="clear:both;" />  
+            <div class="clearfix"></div>      
+          <div style="background:#fffe97;padding:10px;" ng-show="Myskills.length<1"> <div><b>Informaion tags</b></div><div>ie Add your skills </div><ion-item>  
+         	<span style="float:left;"> PHP </span> 
+          </ion-item> 
+          <ion-item>  
+         	<span style="float:left;"> Java </span> 
+          </ion-item> 
+          <ion-item>  
+         	<span style="float:left;"> Autocat </span> 
+          </ion-item> 
+          <ion-item>  
+         	<span style="float:left;"> Sales Manager </span> 
+          </ion-item> </div> 
+          <ion-item ng-hide="task===''" ng-repeat="task in Myskills track by $index"> 
+         	<span style="float:left;"> {{task}} </span> 
+         	<span> 
+         	<div style="float:right;"><div ng-click="removeskill($index)"> <i class="ion-android-close"></i></span></div></div> 
+          </ion-item> 
+          </ion-list> 
+         <div class="clearfix"></div> 
+      </ion-content> 
+ 	 <ion-footer-bar class="bar-stable"> 
+  	<button class="button  button-block button-positive"  style="width:100%" ng-click="saveskill()" style="position:absolute;bottom:0;">Done</button> 
+ </ion-footer-bar> 
+    </div>
+	</script>
+  </ion-content> 
+ <ion-footer-bar><div class="tabs tabs-icon-top"><a class="tab-item" href="#/app/layouts/tinder-cards/"><i class="icon ion-clipboard"></i>Suggested Jobs</a><a class="tab-item"  href="#/app/layouts/search"><i class="icon ion-ios-search-strong"></i>Job Finder</a><a class="tab-item" ui-sref="app.saveforlater"><i class="icon ion-heart"></i>Shortlist</a><a class="tab-item" href="#/app/profile"><i class="icon ion-person"></i>My Profile</a></div></ion-footer-bar> 
+ </ion-view> 

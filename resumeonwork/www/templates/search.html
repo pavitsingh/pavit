@@ -1,0 +1,71 @@
+<ion-view class="category-feeds-view">
+<ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+   <ion-nav-title>
+    <span>Job Finder</span>
+  </ion-nav-title>
+  <ion-content>
+ <br> 
+   <div style="padding-left:10px;padding-right:10px;"> 
+ 	 <div class="item item-input-inset" ng-click="openskillmodel()"> 
+ 		 <span class="input-label" style="width:100px;">What</span> 
+ 		 <span>{{preferskills}}</span>	
+ 	</div> 
+ 	<div class="item item-input-inset" ng-click="openlocmodel()"> 
+ 		 <span class="input-label" style="width:100px;word-wrap: break-word;">Where</span> 
+ 		 <span>{{preferlocation}}</span>	
+ 	</div> 
+ 	<input type="button" value="Search" class="button button-block button-positive" ng-click="searchdata(searchskills,searchloc)" style="width:100%"> 
+   </div> 
+   <script id="Location.html" type="text/ng-template">
+    <div class="modal" style="top:0;left:0; height:100%;"> 
+     <ion-header-bar class="bar-secondary app-top-bar"> 
+     <i class="ion-ios-arrow-back"  ng-click="closelocmodel()"  style="font-size:30px;height:30px;color:#fff;padding-left:10px;padding-top:5px;cursor:pointer;" />  
+  <h1 class="title" style="float:left;">Preferred Location</h1> 
+     </ion-header-bar> 
+     <ion-content class="has-footer"> 
+              <ion-list>  
+            <div class="clearfix"></div> 
+           <input type="text" ng-model="searchlocation" placeholder="Type here to search" style="width:100%;padding:6px;margin-left:5px;"></input> 
+          <ion-item ng-repeat="loc in Location | filter : searchlocation" >  
+          <div style="float:left;">  
+ 		  {{loc.location}} 
+  </div> 
+  <div style="float:right;">  
+     <input name="{{loc.id}}" type="checkbox" ng-checked="loc.checked"  ng-click="addlocation(loc,$index)" /> </div> 
+           </ion-item> 
+          </ion-list> 
+         <div class="clearfix"></div> 
+      </ion-content> 
+ <ion-footer-bar class="bar-stable"> 
+  <button class="button  button-block button-positive"  ng-click="savelocation()">Save</button> 
+ </ion-footer-bar> 
+    </div> 
+   </script>
+   <script id="Skills.html" type="text/ng-template">
+       <div class="modal" style="top:0;left:0; height:100%">  
+     <ion-header-bar class="bar-secondary app-top-bar"> 
+     <i class="ion-ios-arrow-back"  ng-click="closeskillmodel()"  style="font-size:30px;height:30px;color:#fff;padding-left:10px;padding-top:5px;cursor:pointer;" /><h1 class="title" style="float:left;">Add Skill</h1> 
+     </ion-header-bar> 
+     <ion-content> 
+              <ion-list> 
+              <input type="text" class="input" style="width:80%;float:left; padding:6px;margin-left:5px;" ng-model="newskill" placeholder=" Add Skill "></input> <i class="ion-android-add-circle" style="font-size:30px;margin-left:10px;" ng-click="addmyskill(newskill);newskill=''" ></i><br><br style="clear:both;" />  
+            <div class="clearfix"></div>      
+          <ion-item ng-repeat="task in Myskills track by $index"> 
+         <span style="float:left;"> {{task}} </span> 
+         <span> 
+         <div style="float:right;"><div ng-click="removeskill($index)"> <i class="ion-android-close"></i></span></div></div> 
+           </ion-item> 
+          </ion-list> 
+         <div class="clearfix"></div> 
+      </ion-content> 
+ 	 <ion-footer-bar class="bar-stable"> 
+  	<button class="button  button-block button-positive" ng-click="saveskill()" style="position:absolute;bottom:0;">Save</button> 
+ </ion-footer-bar> 
+    </div> 
+   </script>
+
+    </ion-content>
+<ion-footer-bar><div class="tabs tabs-icon-top"><a class="tab-item" href="#/app/layouts/tinder-cards/"><i class="icon ion-clipboard"></i>Suggested Jobs</a><a class="tab-item"  href="#/app/layouts/search"><i class="icon ion-ios-search-strong"></i>Job Finder</a><a class="tab-item"  ui-sref="app.saveforlater"><i class="icon ion-heart"></i>Shortlist</a><a class="tab-item" href="#/app/profile"><i class="icon ion-person"></i>My Profile</a></div></ion-footer-bar> 
+ </ion-view>

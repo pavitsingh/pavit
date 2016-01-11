@@ -1,0 +1,18 @@
+<ion-view class="tinder-cards-view">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+ <ion-nav-title>
+    <span>Applied Jobs ({{appcnt}})</span>
+  </ion-nav-title>
+  <ion-content scroll="true"> <div ng-show="appcnt==0" style="width:100%;text-align:center;position:relative;top:100px;"> No Applied Jobs </div>  
+ <ion-refresher on-refresh="doRefresh()" > 
+  </ion-refresher> 
+  	<div class="appliedjob_container row" ng-repeat="jobs in appliedjobs track by $index" ng-click="onHold($index,jobs)"> 
+ 		<div class="appliedjob_briefcase"><div><i class="ion-briefcase"></i></div></div> 
+ 		<div class="appliedjob_jobtitle">{{jobs.jobTitle}}<br>Applied on : {{jobs.appliedjob}}</div> 
+ 	</div> 
+ 	<br style="clear:both" /> 
+  </ion-content> 
+ <ion-footer-bar><div class="tabs tabs-icon-top"><a class="tab-item" href="#/app/layouts/tinder-cards/"><i class="icon ion-clipboard"></i>Suggested Jobs</a><a class="tab-item"  href="#/app/layouts/search"><i class="icon ion-ios-search-strong"></i>Job Finder</a><a class="tab-item"  ui-sref="app.saveforlater"><i class="icon ion-heart"></i>Shortlist</a><a class="tab-item" href="#/app/profile"><i class="icon ion-person"></i>My Profile</a></div></ion-footer-bar> 
+ </ion-view>

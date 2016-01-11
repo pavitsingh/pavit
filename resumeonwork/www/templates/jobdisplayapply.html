@@ -1,0 +1,50 @@
+<ion-view class="profile-view">
+ <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-chevron-left" onclick="window.history.back()"></button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <span>Job Details</span>
+  </ion-nav-title>
+  <ion-content ng-click="ontap()">
+ <section id="cd-timeline" class="cd-container"> 
+ <div> 
+ <div class="cd-timeline-block"> 
+ 	<div class="cd-timeline-img cd-movie"> 
+ 		<div class="ion-briefcase" style="font-size: 24px;color: white;position: absolute;left:23%;top:18%;vertical-align: middle;"></div> 
+ 	</div> <!-- cd-timeline-img --> 
+ 	<div class="cd-timeline-content" > 
+ 		<h2  style="font-size:16px;">{{jobdetails.comtitle}}</h2>
+		
+		<p> at {{jobdetails.jobComp}}</p> 
+ 	</div> <!-- cd-timeline-content --> 
+ </div> <!-- cd-timeline-block --> 
+ <div class="cd-timeline-block"> 
+ 	<div class="cd-timeline-img cd-location"> 
+ 		<div class="ion-location" style="font-size: 24px;color: white;position: absolute;left:35%;top:20%;vertical-align: middle;"></div> 
+ 	</div> <!-- cd-timeline-img --> 
+ 	<div class="cd-timeline-content"> 
+ 	{{jobdetails.jobLocation}}	
+ 	</div> <!-- cd-timeline-content --> 
+ </div> <!-- cd-timeline-block --> 
+ <div class="cd-timeline-block"> 
+ 	<div class="cd-timeline-img cd-description"> 
+ 		<div class="ion-ios-book" style="font-size: 24px;color: white;position: absolute;left:25%;top:20%;vertical-align: middle;"></div> 
+ 	</div> <!-- cd-timeline-img --> 
+ 	<div class="cd-timeline-contentdesc" style='margin-left:55px;position:relative;top:10px;'><div style='color:#c1c1c1;font-size:10px;'>Job Description</div> 
+ 	<div>{{jobdetails.jobDetails}}</div>	
+  	<div style='color:#c1c1c1;font-size:10px;'>Skills</div> {{jobdetails.jobSkills}} 
+ 	</div> <!-- cd-timeline-content --> 
+ </div> <!-- cd-timeline-block --> 
+ </div> 
+ </section><!-- cd-timeline --> 
+  </ion-content><!--<i ng-click='share(jobdetails.jobId)' class='ion-android-share-alt' style='position:fixed;top:60px;right:15px;font-size:30px;'></i>--> 
+ <ion-footer-bar>
+ <div style="text-align:center;padding-left:30px;"> 
+ 						<ul> 
+						<li>
+							<i class="ion-android-share-alt" ng-click="share()"></i>
+						</li>
+					</div>
+ <div class="tabs tabs-icon-top"><button style="margin:5px;" class="button button-block button-dark" ng-click="jobapply(jobdetails.jobId)">Apply</button> <button class="button button-block button-dark" style="margin:5px;"  ng-click="jobshortlist(jobdetails.jobId)">Shortlist</button><button style="margin:5px;" class="button button-block button-dark" ng-click="jobignore(jobdetails.jobId)">Ignore</button></div>
+ </ion-footer-bar> 
+ </ion-view>
